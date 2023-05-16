@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:notfound/api.dart' show searchRa;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,9 +26,12 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController raController = TextEditingController();
 
   void showRA() async {
+    var response = await searchRa(raController.text);
+    // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('RA: ${raController.text}'),
+        //content: Text('RA: ${raController.text}'),
+        content: Text("Response: $response"),
       ),
     );
   }
@@ -49,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: SingleChildScrollView(
             child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.6,
+              width: MediaQuery.of(context).size.width * 0.8,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
