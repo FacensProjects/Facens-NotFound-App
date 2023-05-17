@@ -30,12 +30,6 @@ class _MyHomePageState extends State<MyHomePage> {
     var response = await searchRa(raController.text);
     if (response?['status']) {
       // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Bem vindo ${response?['student']['name']}"),
-        ),
-      );
-      // ignore: use_build_context_synchronously
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => MyMenuPage(response: response!)),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyMenuPage extends StatefulWidget {
   final Map<String, dynamic>? response;
@@ -9,13 +10,24 @@ class MyMenuPage extends StatefulWidget {
   _MyMenuPageState createState() => _MyMenuPageState();
 }
 class _MyMenuPageState extends State<MyMenuPage> {
+  final Uri canvasUrl = Uri.parse('https://facens.instructure.com/');
 
-  void actionCanvas() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("Canvas"),
-      ),
-    );
+  Future<bool> launchCanvas() async {
+    if (!await launchUrl(canvasUrl)) {
+      return false;
+    }
+    return true;
+  }
+
+  void actionCanvas() async {
+    if (!await launchCanvas()){
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Não foi possível acessar o Canvas."),
+        ),
+      );
+    }
   }
 
   void actionMapa() {
@@ -27,11 +39,24 @@ class _MyMenuPageState extends State<MyMenuPage> {
   }
 
   void actionAulas() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("Aulas"),
-      ),
-    );
+    if (widget.response?['class']['status']) {
+      String aula = widget.response?['class']['course'];
+      String sala = widget.response?['class']['class'];
+      String inicio = widget.response?['class']['start'];
+      String fim = widget.response?['class']['end'];
+      String professor = widget.response?['class']['teacher'];
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Hoje, haverá uma aula de $aula na sala $sala nos horários de ($inicio - $fim) com o professor $professor."),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Não foi possível encontrar nenhuma aula para hoje."),
+        ),
+      );
+    }
   }
 
   void actionAvisos() {
