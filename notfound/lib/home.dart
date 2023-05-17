@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:notfound/api.dart' show searchRa;
+import 'package:notfound/menu.dart' show MyMenuPage;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -33,6 +34,10 @@ class _MyHomePageState extends State<MyHomePage> {
         //content: Text('RA: ${raController.text}'),
         content: Text("Response: $response"),
       ),
+    );
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => MyMenuPage()),
     );
   }
 
