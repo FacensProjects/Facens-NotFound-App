@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyMenuPage extends StatefulWidget {
-  final Map<String, dynamic>? response;
-
-  const MyMenuPage({Key? key, this.response}) : super(key: key);
+  const MyMenuPage({super.key});
 
   @override
   _MyMenuPageState createState() => _MyMenuPageState();
