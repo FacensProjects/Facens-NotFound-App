@@ -28,17 +28,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void showRA() async {
     var response = await searchRa(raController.text);
-    // ignore: use_build_context_synchronously
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        //content: Text('RA: ${raController.text}'),
-        content: Text("Response: $response"),
-      ),
-    );
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => MyMenuPage()),
-    );
+    if (response?['status']) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Bem vindo ${response?['student']['name']}"),
+        ),
+      );
+      // ignore: use_build_context_synchronously
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MyMenuPage(response: response!)),
+      );
+    } else {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Estudante com RA(${raController.text}) inválido."),
+        ),
+      );
+    }
   }
 
   @override
