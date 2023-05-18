@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:notfound/api.dart' show searchRa;
 
 class MyMenuPage extends StatefulWidget {
-  final Map<String, dynamic>? response;
+  Map<String, dynamic> response;
+  String ra;
 
-  const MyMenuPage({Key? key, this.response}) : super(key: key);
+  MyMenuPage({Key? key, required this.response, required this.ra})
+      : super(key: key);
 
   @override
   _MyMenuPageState createState() => _MyMenuPageState();
@@ -12,6 +15,19 @@ class MyMenuPage extends StatefulWidget {
 
 class _MyMenuPageState extends State<MyMenuPage> {
   final Uri canvasUrl = Uri.parse('https://facens.instructure.com/');
+
+  Future<bool> updateResponse() async {
+    try {
+      var tempResponse = await searchRa(widget.ra);
+      if (tempResponse?['status']) {
+        widget.response = tempResponse!;
+        return true;
+      }
+    } finally {
+      // ignore: control_flow_in_finally
+      return false;
+    }
+  }
 
   Future<bool> launchCanvas() async {
     if (!await launchUrl(canvasUrl)) {
@@ -21,6 +37,7 @@ class _MyMenuPageState extends State<MyMenuPage> {
   }
 
   void actionCanvas() async {
+    await updateResponse();
     if (!await launchCanvas()) {
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
@@ -31,7 +48,9 @@ class _MyMenuPageState extends State<MyMenuPage> {
     }
   }
 
-  void actionMapa() {
+  void actionMapa() async {
+    await updateResponse();
+    // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text("Mapa"),
@@ -39,15 +58,17 @@ class _MyMenuPageState extends State<MyMenuPage> {
     );
   }
 
-  void actionAulas() {
-    if (widget.response?['class']['status'] ?? false) {
-      String curso = widget.response?['class']['course'] ?? '';
-      String aula = widget.response?['class']['course'] ??
+  void actionAulas() async {
+    await updateResponse();
+    if (widget.response['class']['status'] ?? false) {
+      String curso = widget.response['class']['course'] ?? '';
+      String aula = widget.response['class']['course'] ??
           ''; // widget.response?['class']['name'] ?? '';
-      String sala = widget.response?['class']['class'] ?? '';
-      String inicio = widget.response?['class']['start'] ?? '';
-      String fim = widget.response?['class']['end'] ?? '';
-      String professor = widget.response?['class']['teacher'] ?? '';
+      String sala = widget.response['class']['class'] ?? '';
+      String inicio = widget.response['class']['start'] ?? '';
+      String fim = widget.response['class']['end'] ?? '';
+      String professor = widget.response['class']['teacher'] ?? '';
+      // ignore: use_build_context_synchronously
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -67,6 +88,7 @@ class _MyMenuPageState extends State<MyMenuPage> {
         },
       );
     } else {
+      // ignore: use_build_context_synchronously
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -88,12 +110,14 @@ class _MyMenuPageState extends State<MyMenuPage> {
     }
   }
 
-  void actionAvisos() {
-    if ((widget.response?['class']['notification'] ?? []).isNotEmpty) {
-      for (var notification in widget.response?['class']['notification']) {
+  void actionAvisos() async {
+    await updateResponse();
+    if ((widget.response['class']['notification'] ?? []).isNotEmpty) {
+      for (var notification in widget.response['class']['notification']) {
         String titulo = notification['title'] ?? '';
         String professor = notification['teacher'] ?? '';
         String descricao = notification['description'] ?? '';
+        // ignore: use_build_context_synchronously
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -113,6 +137,7 @@ class _MyMenuPageState extends State<MyMenuPage> {
         );
       }
     } else {
+      // ignore: use_build_context_synchronously
       showDialog(
         context: context,
         builder: (BuildContext context) {

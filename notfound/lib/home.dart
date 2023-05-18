@@ -23,16 +23,25 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
+
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController raController = TextEditingController();
 
-  void showRA() async {
+  void actionLogin() async {
     var response = await searchRa(raController.text);
     if (response?['status']) {
       // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Bem vindo ${response?['student']['name']}"),
+        ),
+      );
+      // ignore: use_build_context_synchronously
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => MyMenuPage(response: response!)),
+        MaterialPageRoute(
+            builder: (context) =>
+                MyMenuPage(response: response!, ra: raController.text)),
       );
     } else {
       // ignore: use_build_context_synchronously
@@ -49,7 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
           FocusManager.instance.primaryFocus?.unfocus();
         }
       },
@@ -88,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   const SizedBox(height: 20.0),
                   ElevatedButton(
-                    onPressed: showRA,
+                    onPressed: actionLogin,
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
                       backgroundColor: Colors.grey[600],
@@ -98,7 +108,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     child: const Text('Login'),
                   ),
-                
                 ],
               ),
             ),
