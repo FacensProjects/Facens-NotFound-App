@@ -9,6 +9,7 @@ class MyMenuPage extends StatefulWidget {
   @override
   _MyMenuPageState createState() => _MyMenuPageState();
 }
+
 class _MyMenuPageState extends State<MyMenuPage> {
   final Uri canvasUrl = Uri.parse('https://facens.instructure.com/');
 
@@ -20,7 +21,7 @@ class _MyMenuPageState extends State<MyMenuPage> {
   }
 
   void actionCanvas() async {
-    if (!await launchCanvas()){
+    if (!await launchCanvas()) {
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -39,32 +40,98 @@ class _MyMenuPageState extends State<MyMenuPage> {
   }
 
   void actionAulas() {
-    if (widget.response?['class']['status']) {
-      String aula = widget.response?['class']['course'];
-      String sala = widget.response?['class']['class'];
-      String inicio = widget.response?['class']['start'];
-      String fim = widget.response?['class']['end'];
-      String professor = widget.response?['class']['teacher'];
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Hoje, haverá uma aula de $aula na sala $sala nos horários de ($inicio - $fim) com o professor $professor."),
-        ),
+    if (widget.response?['class']['status'] ?? false) {
+      String curso = widget.response?['class']['course'] ?? '';
+      String aula = widget.response?['class']['course'] ??
+          ''; // widget.response?['class']['name'] ?? '';
+      String sala = widget.response?['class']['class'] ?? '';
+      String inicio = widget.response?['class']['start'] ?? '';
+      String fim = widget.response?['class']['end'] ?? '';
+      String professor = widget.response?['class']['teacher'] ?? '';
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(curso),
+            content: Text(
+                'Hoje, haverá uma aula de $aula na sala $sala nos horários de ($inicio - $fim) com o professor $professor.'),
+            actions: [
+              TextButton(
+                child: const Icon(Icons.close),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
       );
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Não foi possível encontrar nenhuma aula para hoje."),
-        ),
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('NotFound - Facens'),
+            content: const Text(
+                'Não foi possível encontrar nenhuma aula para hoje.'),
+            actions: [
+              TextButton(
+                child: const Icon(Icons.close),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
       );
     }
   }
 
   void actionAvisos() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("Avisos"),
-      ),
-    );
+    if ((widget.response?['class']['notification'] ?? []).isNotEmpty) {
+      for (var notification in widget.response?['class']['notification']) {
+        String titulo = notification['title'] ?? '';
+        String professor = notification['teacher'] ?? '';
+        String descricao = notification['description'] ?? '';
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(titulo),
+              content: Text('$professor: $descricao'),
+              actions: [
+                TextButton(
+                  child: const Icon(Icons.close),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('NotFound - Facens'),
+            content: const Text(
+                'Não foi possível encontrar nenhum aviso para hoje.'),
+            actions: [
+              TextButton(
+                child: const Icon(Icons.close),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   @override
@@ -72,7 +139,8 @@ class _MyMenuPageState extends State<MyMenuPage> {
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
           FocusManager.instance.primaryFocus?.unfocus();
         }
       },
@@ -112,7 +180,9 @@ class _MyMenuPageState extends State<MyMenuPage> {
                         ),
                         child: const Text('Canvas'),
                       ),
-                      const SizedBox(width: 10,),
+                      const SizedBox(
+                        width: 10,
+                      ),
                       ElevatedButton(
                         onPressed: actionMapa,
                         style: ElevatedButton.styleFrom(
@@ -142,7 +212,9 @@ class _MyMenuPageState extends State<MyMenuPage> {
                         ),
                         child: const Text('Aulas'),
                       ),
-                      const SizedBox(width: 10,),
+                      const SizedBox(
+                        width: 10,
+                      ),
                       ElevatedButton(
                         onPressed: actionAvisos,
                         style: ElevatedButton.styleFrom(
