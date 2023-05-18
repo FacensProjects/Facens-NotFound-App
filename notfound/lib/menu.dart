@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:notfound/api.dart' show searchRa;
+import 'package:notfound/mapa.dart' show MyMapaPage;
 
+// ignore: must_be_immutable
 class MyMenuPage extends StatefulWidget {
   Map<String, dynamic> response;
   String ra;
@@ -10,6 +13,7 @@ class MyMenuPage extends StatefulWidget {
       : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _MyMenuPageState createState() => _MyMenuPageState();
 }
 
@@ -52,10 +56,11 @@ class _MyMenuPageState extends State<MyMenuPage> {
   void actionMapa() async {
     await updateResponse();
     // ignore: use_build_context_synchronously
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("Mapa"),
-      ),
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => MyMapaPage(
+              location: widget.response['class']['location'] ?? 'default')),
     );
     setState(() {});
   }
@@ -161,6 +166,15 @@ class _MyMenuPageState extends State<MyMenuPage> {
       );
     }
     setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
   }
 
   @override
