@@ -46,6 +46,7 @@ class _MyMenuPageState extends State<MyMenuPage> {
         ),
       );
     }
+    setState(() {});
   }
 
   void actionMapa() async {
@@ -56,6 +57,7 @@ class _MyMenuPageState extends State<MyMenuPage> {
         content: Text("Mapa"),
       ),
     );
+    setState(() {});
   }
 
   void actionAulas() async {
@@ -108,6 +110,7 @@ class _MyMenuPageState extends State<MyMenuPage> {
         },
       );
     }
+    setState(() {});
   }
 
   void actionAvisos() async {
@@ -157,6 +160,7 @@ class _MyMenuPageState extends State<MyMenuPage> {
         },
       );
     }
+    setState(() {});
   }
 
   @override
@@ -189,7 +193,10 @@ class _MyMenuPageState extends State<MyMenuPage> {
                     'O caminho para o sucesso começa aqui.',
                     style: TextStyle(fontSize: 15),
                   ),
-                  const SizedBox(height: 100.0),
+                  const SizedBox(height: 25.0),
+                  Image.asset(
+                      'images/${widget.response['class']['location'] ?? 'default'}.png'),
+                  const SizedBox(height: 25.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
