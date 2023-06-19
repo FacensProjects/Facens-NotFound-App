@@ -1,4 +1,4 @@
-# 📚 Integra App
+# 📚 NotFoundApp
  
 Este projeto, desenvolvido para atender às demandas da Fábrica de Projetos do curso de Análise e Desenvolvimento de Sistemas (ADS) da FACENS, apresenta um aplicativo multiplataforma voltado para a educação, compatível tanto com iOS quanto Android. Buscando otimizar a comunicação e a entrega de informações em um ambiente educacional, o aplicativo se comunica com um servidor construído com Python e a framework Django, acessando dados de alunos através de uma API. Ao enviar o Registro Acadêmico (RA) do aluno, o servidor responde com a aula do dia e notificações pertinentes. Este trabalho é uma confluência de tecnologias, todas trabalhando juntas para proporcionar uma solução eficiente e eficaz para a comunicação educacional.
 
