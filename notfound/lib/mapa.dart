@@ -35,7 +35,7 @@ class _MyMapaPageState extends State<MyMapaPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('NotFound - Facens'),
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.deepPurpleAccent,
       ),
       body: Center(
         child: Image.asset('images/${widget.location}.png'),

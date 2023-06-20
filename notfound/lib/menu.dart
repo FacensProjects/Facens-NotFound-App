@@ -190,7 +190,7 @@ class _MyMenuPageState extends State<MyMenuPage> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('NotFound - Facens'),
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.deepPurpleAccent,
         ),
         body: Center(
           child: SingleChildScrollView(
@@ -217,9 +217,9 @@ class _MyMenuPageState extends State<MyMenuPage> {
                       ElevatedButton(
                         onPressed: actionCanvas,
                         style: ElevatedButton.styleFrom(
-                          fixedSize: const Size(150, 10),
+                          fixedSize: const Size(125, 10),
                           foregroundColor: Colors.white,
-                          backgroundColor: Colors.grey[600],
+                          backgroundColor: Colors.deepPurpleAccent[600],
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           ),
@@ -232,9 +232,9 @@ class _MyMenuPageState extends State<MyMenuPage> {
                       ElevatedButton(
                         onPressed: actionMapa,
                         style: ElevatedButton.styleFrom(
-                          fixedSize: const Size(150, 10),
+                          fixedSize: const Size(125, 10),
                           foregroundColor: Colors.white,
-                          backgroundColor: Colors.grey[600],
+                          backgroundColor: Colors.deepPurpleAccent[600],
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           ),
@@ -249,9 +249,9 @@ class _MyMenuPageState extends State<MyMenuPage> {
                       ElevatedButton(
                         onPressed: actionAulas,
                         style: ElevatedButton.styleFrom(
-                          fixedSize: const Size(150, 10),
+                          fixedSize: const Size(125, 10),
                           foregroundColor: Colors.white,
-                          backgroundColor: Colors.grey[600],
+                          backgroundColor: Colors.deepPurpleAccent[600],
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           ),
@@ -264,9 +264,9 @@ class _MyMenuPageState extends State<MyMenuPage> {
                       ElevatedButton(
                         onPressed: actionAvisos,
                         style: ElevatedButton.styleFrom(
-                          fixedSize: const Size(150, 10),
+                          fixedSize: const Size(125, 10),
                           foregroundColor: Colors.white,
-                          backgroundColor: Colors.grey[600],
+                          backgroundColor: Colors.deepPurple[600],
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           ),

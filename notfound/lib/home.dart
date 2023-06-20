@@ -4,13 +4,16 @@ import 'package:notfound/api.dart' show searchRa;
 import 'package:notfound/menu.dart' show MyMenuPage;
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        brightness: Brightness.dark,
+        primarySwatch: Colors.deepPurple,
+        primaryColor: Colors.deepPurpleAccent,
+        scaffoldBackgroundColor: Colors.black,
       ),
       home: const MyHomePage(),
     );
@@ -75,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('NotFound - Facens'),
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.deepPurpleAccent,
         ),
         body: Center(
           child: SingleChildScrollView(
@@ -110,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: actionLogin,
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      backgroundColor: Colors.grey[600],
+                      backgroundColor: Colors.deepPurpleAccent[600],
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5),
                       ),
