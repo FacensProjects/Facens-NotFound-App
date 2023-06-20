@@ -87,10 +87,11 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Icon(
-                    Icons.school,
-                    size: 100.0,
+                  Image.asset(
+                    'images/integra.png',
+                    width: 100,
                   ),
+                  const SizedBox(height: 25.0),
                   const Text(
                     'O caminho para o sucesso começa aqui.',
                     style: TextStyle(fontSize: 15),

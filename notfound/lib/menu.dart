@@ -199,15 +199,6 @@ class _MyMenuPageState extends State<MyMenuPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Icon(
-                    Icons.school,
-                    size: 100.0,
-                  ),
-                  const Text(
-                    'O caminho para o sucesso começa aqui.',
-                    style: TextStyle(fontSize: 15),
-                  ),
-                  const SizedBox(height: 25.0),
                   Image.asset(
                       'images/${widget.response['class']['location'] ?? 'default'}.png'),
                   const SizedBox(height: 25.0),
