@@ -119,8 +119,8 @@ class _MyMenuPageState extends State<MyMenuPage> {
 
   void actionAvisos() async {
     await updateResponse();
-    if ((widget.response['class']['notification'] ?? []).isNotEmpty) {
-      for (var notification in widget.response['class']['notification']) {
+    if ((widget.response['notification'] ?? []).isNotEmpty) {
+      for (var notification in widget.response['notification']) {
         String titulo = notification['title'] ?? '';
         String professor = notification['teacher'] ?? '';
         String descricao = notification['description'] ?? '';
