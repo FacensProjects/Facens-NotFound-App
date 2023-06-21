@@ -69,8 +69,7 @@ class _MyMenuPageState extends State<MyMenuPage> {
     await updateResponse();
     if (widget.response['class']['status'] ?? false) {
       String curso = widget.response['class']['course'] ?? '';
-      String aula = widget.response['class']['course'] ??
-          ''; // widget.response?['class']['name'] ?? '';
+      String aula = widget.response['class']['name'] ?? '';
       String sala = widget.response['class']['class'] ?? '';
       String inicio = widget.response['class']['start'] ?? '';
       String fim = widget.response['class']['end'] ?? '';
