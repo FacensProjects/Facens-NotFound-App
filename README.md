@@ -34,7 +34,7 @@ Além destas instalações, é fundamental que você tenha uma compreensão bás
 
 ## 🌐 Servidor Facens-NotFound
 
-O NotFound App é a peça chave do projeto NotFound e, para garantir seu pleno funcionamento, é indispensável a existência de um servidor local ou online para sua comunicação. Se você deseja configurar o servidor adequado para o aplicativo, consulte as instruções no nosso outro repositório [NotFound-Server](https://github.com/FacensProjects/Facens-NotFound-Server).
+O NotFound App é a peça chave do projeto NotFound e, para garantir seu pleno funcionamento, é indispensável a existência de um servidor local ou online para sua comunicação. Se você deseja configurar o servidor adequado para o aplicativo, consulte as instruções no nosso outro repositório [Facens-NotFound-Server](https://github.com/FacensProjects/Facens-NotFound-Server).
 
 ![NotFound App](images/panel-demo.png)
 
