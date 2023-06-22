@@ -74,9 +74,6 @@ O NotFound App é a peça chave do projeto NotFound e, para garantir seu pleno f
 
 8. Agora você está pronto para utilizar o NotFound App.
 
-    ![Home App](images/home-demo.png)
-    ![Menu App](images/menu-demo.png)
-
 ## 👥 Desenvolvedores
 
 - [WhitePoodleMoth](https://github.com/WhitePoodleMoth)
