@@ -1,44 +1,86 @@
-# 📚 NotFoundApp
- 
-Este projeto, desenvolvido para atender às demandas da Fábrica de Projetos do curso de Análise e Desenvolvimento de Sistemas (ADS) da FACENS, apresenta um aplicativo multiplataforma voltado para a educação, compatível tanto com iOS quanto Android. Buscando otimizar a comunicação e a entrega de informações em um ambiente educacional, o aplicativo se comunica com um servidor construído com Python e a framework Django, acessando dados de alunos através de uma API. Ao enviar o Registro Acadêmico (RA) do aluno, o servidor responde com a aula do dia e notificações pertinentes. Este trabalho é uma confluência de tecnologias, todas trabalhando juntas para proporcionar uma solução eficiente e eficaz para a comunicação educacional.
+# 🎓 NotFound App
 
-## 🤔 Por que Flutter?
-Ao considerar a necessidade de desenvolver para ambas as plataformas (iOS e Android), a primeira ideia que veio à mente foi utilizar React Native que usa JavaScript. Porém, após algumas pesquisas, encontrei o Flutter. Esta framework, que utiliza a linguagem Dart, propõe várias melhorias em relação a problemas comuns encontrados em outras linguagens. Além disso, o Flutter se destaca na otimização de recursos, o que me levou a escolhê-lo para este projeto.
+## 📘 Sobre o Projeto
+
+O NotFound App é um inovador aplicativo criado a partir de Dart e Flutter, especificamente projetado com um objetivo primordial: unir compatibilidade universal com acesso fácil e direto aos dados acadêmicos de estudantes universitários. Nossa missão é abolir a necessidade de navegar por múltiplos sites e aplicativos, centralizando todas as informações de atividades acadêmicas em uma única plataforma. Por meio de uma simples busca pelo Registro Acadêmico (RA) do aluno, o NotFound App retorna todos os dados necessários, oferecendo uma solução amigável, intuitiva e robusta para a gestão de informações acadêmicas.
+
+![NotFound App](images/app-demo.png)
+
+## 🔧 Como o App foi Construído
+
+O NotFound App foi meticulosamente desenvolvido com a linguagem de programação Dart e a poderosa framework Flutter. Estas tecnologias foram escolhidas pela sua capacidade inigualável de desenvolvimento multiplataforma a partir de um único código-base, garantindo que o nosso aplicativo seja compatível com todas as plataformas existentes.
+
+No coração do nosso sistema está uma conexão segura e eficiente com um servidor externo, desenvolvido com Django. Este servidor possui uma API robusta, projetada para fornecer informações acadêmicas específicas do aluno utilizando somente o seu Registro Acadêmico (RA). Dados como aulas, notificações e outras informações relevantes são obtidos diretamente deste servidor, consolidando todas as informações necessárias em um único lugar.
+
+A experiência do usuário começa em uma tela de login intuitiva, onde o RA é inserido. Posteriormente, uma requisição POST é enviada para a API do servidor. Se o RA for validado com sucesso, o usuário é direcionado para a visualização de seus dados acadêmicos. Caso contrário, um erro é retornado, orientando o usuário a verificar o RA inserido. Esta interação fluida e segura garante que apenas estudantes validados tenham acesso às suas informações, mantendo a privacidade e a segurança dos dados.
 
 ## 💻 Tecnologias Utilizadas
 - 🎯 Dart: Linguagem de programação adotada pelo Flutter.
 - 📱 Flutter: Framework que viabiliza o desenvolvimento do aplicativo para iOS e Android.
-- 🐍 Python: Linguagem de programação empregada na implementação do servidor.
-- 🚀 Django: Framework Python utilizado para estruturar o servidor.
+- 📲 Emuladores Android e iOS: Ferramentas indispensáveis para o teste e simulação do aplicativo em diferentes dispositivos e sistemas operacionais.
+- 🌐 API: Interface de programação de aplicações utilizada para facilitar a comunicação entre diferentes softwares.
+- 🎨 Figma: Ferramenta de design utilizada para a criação e prototipação da interface do usuário.
+
+## 📋 Requisitos para Utilizar o Sistema
+
+Para conseguir executar o NotFound App no seu sistema, é essencial que você tenha os seguintes componentes instalados:
+
+- 📱 Flutter & Dart ([Guia de Instalação](https://docs.flutter.dev/get-started/install))
+- 🤖 Android Studio (Ambiente de desenvolvimento integrado - IDE)
+- 🍏 XCode (Necessário para usuários do sistema operacional MacOS)
+- 🌐 Servidor Facens-NotFound ([Guia de Instalação](https://github.com/FacensProjects/Facens-NotFound-Server))
+
+Além destas instalações, é fundamental que você tenha uma compreensão básica de como operar a linha de comando no seu respectivo sistema operacional. Com estes pré-requisitos cumpridos, você estará preparado para executar e aproveitar todas as funcionalidades do NotFound App.
+
+## 🌐 Servidor Facens-NotFound
+
+O NotFound App é a peça chave do projeto NotFound e, para garantir seu pleno funcionamento, é indispensável a existência de um servidor local ou online para sua comunicação. Se você deseja configurar o servidor adequado para o aplicativo, consulte as instruções no nosso outro repositório.
+
+![NotFound App](images/panel-demo.png)
+
+> ❗ **Atenção:** 
+> Se você optar por hospedar o servidor Django online, será necessário realizar uma pequena alteração para garantir o funcionamento adequado do aplicativo. Acesse o arquivo **[notfound/lib/api.dart](notfound/lib/api.dart)** e atualize-o com o novo IP ou DNS do servidor online. Com essa modificação, o NotFound App torna-se verdadeiramente dinâmico, capaz de operar em qualquer local com acesso a dados móveis ou conexão com a internet. Assim, garantimos que você tenha todas as informações acadêmicas ao seu alcance, onde quer que esteja.
+>
+> O seguinte código está configurado para uma aplicação local com o IP **10.0.2.2:8000** que vai funcionar normalmente caso você tenha um emulador e um servidor na mesma máquina. Caso queira torná-lo online, você deve trocar pelo IP ou DNS que estiver online. Veja o código a seguir:
+> ```dart
+> const String endSearch = "http://10.0.2.2:8000/api/v1/search/";
+> ```
+
+## 🚀 Como Usar
+
+1. Primeiramente, clone o repositório usando o seguinte comando no terminal:
+
+    ```sh
+    git clone https://github.com/FacensProjects/Facens-NotFound-App.git
+    ```
+
+2. A seguir, entre na pasta do projeto com o comando:
+
+    ```sh
+    cd Facens-NotFound-App/notfound
+    ```
+
+3. Agora, instale as dependências do projeto utilizando o Flutter:
+
+    ```sh
+    flutter pub get
+    ```
+
+4. Após a instalação das dependências, você pode iniciar o aplicativo com o seguinte comando:
+
+    ```sh
+    flutter run
+    ```
+
+8. Agora você está pronto para utilizar o NotFound App.
+
+    ![Home App](images/home-demo.png)
+    ![Menu App](images/menu-demo.png)
+
+## 👥 Desenvolvedores
+
+- [WhitePoodleMoth](https://github.com/WhitePoodleMoth)
 
 ## 📄 Licença
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE.md](LICENSE) para mais detalhes.
 
-A Licença MIT é uma licença de software permissiva, o que significa que ela coloca poucas restrições sobre o que você pode fazer com o software. Em termos simples, desde que você forneça atribuição ao autor original e não culpe o autor se o software causar algum problema, você pode fazer praticamente o que quiser com o software - usá-lo, alterá-lo e até distribuí-lo.
-
-## 📘 Recursos Adicionais de Estudo
-
-### 🎯 Dart
-Dart é uma linguagem de programação orientada a objetos, originalmente desenvolvida pelo Google, que o Flutter usa para desenvolver aplicativos. Aqui estão alguns recursos para começar a aprender Dart:
-- [Site oficial do Dart](https://dart.dev/)
-- [Tutorial oficial do Dart](https://dart.dev/guides)
-- [Curso de Dart na Udemy](https://www.udemy.com/course/dart-and-flutter-the-complete-developers-guide/)
-
-
-### 📱 Flutter
-O Flutter é um framework de desenvolvimento de aplicativos multiplataforma criado pelo Google. Ele permite que os desenvolvedores escrevam código uma vez e o executem em ambas as plataformas, Android e iOS. Aqui estão alguns recursos para começar a aprender Flutter:
-- [Site oficial do Flutter](https://flutter.dev/)
-- [Guia oficial do Flutter](https://flutter.dev/docs)
-- [Curso de Flutter na Udemy](https://www.udemy.com/course/flutter-bootcamp-with-dart/)
-
-### 🐍 Python
-Python é uma linguagem de programação de alto nível, interpretada, de script, imperativa, orientada a objetos, funcional, de tipagem dinâmica e forte. Aqui estão alguns recursos para começar a aprender Python:
-- [Site oficial do Python](https://www.python.org/)
-- [Tutorial oficial do Python](https://docs.python.org/3/tutorial/)
-- [Curso de Python na Coursera](https://www.coursera.org/specializations/python)
-
-### 🚀 Django
-Django é um framework de alto nível, escrito em Python que encoraja o desenvolvimento rápido e limpo de aplicações web. Aqui estão alguns recursos para começar a aprender Django:
-- [Site oficial do Django](https://www.djangoproject.com/)
-- [Tutorial oficial do Django](https://docs.djangoproject.com/en/3.2/intro/tutorial01/)
-- [Curso de Django na Udemy](https://www.udemy.com/course/python-and-django-full-stack-web-developer-bootcamp/)
+O NotFound App é licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
