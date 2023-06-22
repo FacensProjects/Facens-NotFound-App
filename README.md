@@ -28,18 +28,18 @@ Para conseguir executar o NotFound App no seu sistema, é essencial que você te
 - 📱 Flutter & Dart ([Guia de Instalação](https://docs.flutter.dev/get-started/install))
 - 🤖 Android Studio (Ambiente de desenvolvimento integrado - IDE)
 - 🍏 XCode (Necessário para usuários do sistema operacional MacOS)
-- 🌐 Servidor Facens-NotFound ([Guia de Instalação](https://github.com/FacensProjects/Facens-NotFound-Server))
+- 🌐 Servidor Facens-NotFound ([Guia de Instalação](https://github.com/FacensProjects/Facens-NotFound-Server#-como-usar))
 
 Além destas instalações, é fundamental que você tenha uma compreensão básica de como operar a linha de comando no seu respectivo sistema operacional. Com estes pré-requisitos cumpridos, você estará preparado para executar e aproveitar todas as funcionalidades do NotFound App.
 
 ## 🌐 Servidor Facens-NotFound
 
-O NotFound App é a peça chave do projeto NotFound e, para garantir seu pleno funcionamento, é indispensável a existência de um servidor local ou online para sua comunicação. Se você deseja configurar o servidor adequado para o aplicativo, consulte as instruções no nosso outro repositório.
+O NotFound App é a peça chave do projeto NotFound e, para garantir seu pleno funcionamento, é indispensável a existência de um servidor local ou online para sua comunicação. Se você deseja configurar o servidor adequado para o aplicativo, consulte as instruções no nosso outro repositório [NotFound-Server](https://github.com/FacensProjects/Facens-NotFound-Server).
 
 ![NotFound App](images/panel-demo.png)
 
 > ❗ **Atenção:** 
-> Se você optar por hospedar o servidor Django online, será necessário realizar uma pequena alteração para garantir o funcionamento adequado do aplicativo. Acesse o arquivo **[notfound/lib/api.dart](notfound/lib/api.dart)** e atualize-o com o novo IP ou DNS do servidor online. Com essa modificação, o NotFound App torna-se verdadeiramente dinâmico, capaz de operar em qualquer local com acesso a dados móveis ou conexão com a internet. Assim, garantimos que você tenha todas as informações acadêmicas ao seu alcance, onde quer que esteja.
+> Se você optar por hospedar o servidor Django online, será necessário realizar uma pequena alteração para garantir o funcionamento adequado do aplicativo. Acesse o arquivo **[notfound/lib/api.dart](notfound/lib/api.dart)** e atualize-o com o novo IP ou DNS do servidor online. Com essa modificação, o NotFound App torna-se verdadeiramente dinâmico, capaz de operar em qualquer local com acesso a dados móveis ou conexão com a internet. Assim, garantimos que você tenha todas as informações acadêmicas ao seu alcance, onde quer que esteja. 
 >
 > O seguinte código está configurado para uma aplicação local com o IP **10.0.2.2:8000** que vai funcionar normalmente caso você tenha um emulador e um servidor na mesma máquina. Caso queira torná-lo online, você deve trocar pelo IP ou DNS que estiver online. Veja o código a seguir:
 > ```dart
