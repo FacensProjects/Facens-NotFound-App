@@ -1,4 +1,4 @@
-# 🎓 NotFound App
+# 🎓 NotFound App (Segundo Semestre)
 
 ## 📘 Sobre o Projeto
 
